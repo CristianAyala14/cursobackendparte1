@@ -1,0 +1,24 @@
+[
+	{
+		"title": "paquete de fideos",
+		"description": "Nueva descripción",
+		"code": "NUEVO123",
+		"price": 19.99,
+		"stock": 60,
+		"category": "caca",
+		"thumbnail": "http://nueva-imagen.com/imagen.jpg",
+		"status": true,
+		"id": 1
+	},
+	{
+		"title": "paquete de caca",
+		"description": "Nueva descripción",
+		"code": "NUEVO123",
+		"price": 19.99,
+		"stock": 60,
+		"category": "caca",
+		"thumbnail": "http://nueva-imagen.com/imagen.jpg",
+		"status": true,
+		"id": 2
+	}
+]

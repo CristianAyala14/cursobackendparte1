@@ -1,0 +1,1 @@
+el desafio consiste en abrir la carpeta desde node, y poner comando "npm init -y" . que te crea un package.json. Osea un proyecto inicializado, un objeto. 

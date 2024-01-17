@@ -1,0 +1,25 @@
+Ya vimos como traer los datos filtrados con querys, pero si tenemos una millonada de datos necesitamos utilizar la paginacion.
+Para esto utilizamos una libreria llamada mongoose-paginate-2 es un plagin para mongoose que nos permitira realizar paginaciones eficientes para los modelos que nosotros especifiquemos. 
+
+npm i mongoose-paginate-v2
+
+docs: documentos devueltos en la pagina
+totalDocs: los documentos totales de la consulta realizada
+limit: limite de resultados por pagina
+page: pagina actual en la que nos encontramos
+totalPages: Paginas totales que pueden ser solicitadas en la busqueda
+hasNextPage: Indica si es posible avanzar a una pagina siguiente
+hasPrevPage: Indica si es posible retroceder a una pagina anterior
+prePage: Pagina anterior en la busqueda
+nextPage: Pagina siguiente de la busqueda
+pagingCounter: Numero de documento en relacion con la pagina actual.
+
+
+EJERCICIO:
+SE CREARA UNA VISTA SIMPLE CON HANDLEBARS DONDE SE PODRAN MOSTRAR LOS ESTUDIATNES
+
+-lOS ESTUDIANTES SERAN MOSTRADOS EN LA VISTA "/STUDENTS"
+-DEBE EXISTIR UN ENLACE "ANTERIOR" PARA REGRESAR A LOS ESTUDIANTES ANTERIORES, SIEMPRE QUE HAYA UNA PAGINA ANTERIOR
+-DEBE EXISTIR UN ENLACE SIGUIENTE PARA CONTINUAR CON LA PAGINACION DE ESTUDIANTES, SIEMPRE QUE HALLA UNA PAGINA SIGUIENTE
+-DEBE INDICARSE LA PAGINA actual
+-DEBE VIVIR EN UN SERVIDOR EXPRESS ESCUCHANDO EL PUERTO 8080

@@ -1,0 +1,9 @@
+POPULATIONS:
+una population implica obtener un documento referenciado dentro de otro documento con el fin de obtener ambos en una sola busqueda. 
+Consiste en almacenar el id de un documentocomo propiedad de otro documento, 
+a esto se le conoce como referencia, populate hace referencia a poblar de un id a un documento completo. 
+En mongoose:
+Es una propiedad de mongoose, por lo que tenemos que tenerlo instalado.
+Hay que tener siempre claro el nombre de la propiedad dentro del objeto, asi tambien como la referencia de la coleccion para poder
+hacer un populate efectivo.
+No hay que guardar directamente el valor a referenciar en el _id. sino asignarlo otro nombre.

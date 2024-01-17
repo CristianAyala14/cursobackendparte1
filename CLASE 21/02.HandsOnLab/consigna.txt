@@ -1,0 +1,3 @@
+mismo proyeecto que clase 20 y 19. solo que aca aplicamos la autenticacion por terceros.
+1 hacemos la nueva app en github copiamos las claves y hacemos las configuraciones para el futuro middelware con passport.
+2- instalamos la exrtateggia git hub, y la vamos a usar en el inicializepassport passport-github2

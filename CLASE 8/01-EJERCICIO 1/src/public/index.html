@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- enctype es para cambiar el tipo de dato para q procese la imagen -->
+<body>
+    <h1>FORMULARIO DE MASCOTAS</h1> 
+    <form action="/api/pets" enctype="multipart/form-data" method="post">
+        <label>Nombre: </label>
+        <input name="nombre">
+        <label>Especie: </label>
+        <input name="especie">
+        <label>Imagen: </label>
+        <input type="file" name="thumbnail">
+        <input type="submit" >
+    </form>
+</body>
+</html>

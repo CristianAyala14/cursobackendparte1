@@ -1,0 +1,85 @@
+Consiste en la realizacion de multiples operaciones sobre mongo, generalmente sobre multiples documentos. (es para las consultas)
+la documentacion es mongo db agregattion.
+Se puede usar para:
+Agrupar documentos con bas en un criterio especifico
+Realizar alguna operacion sobre dichos documentos con el fin de obtener un solo resultado
+Analizar cambios de informacion con el paso del tiempo.
+
+Funcionamiento: Pasos : Stages. ( cada stage es una operacion a realizar.) Podemos definrir cuantas queramos.
+Los documentos resultantes de la stage que finalice, se utilizan como el input de la siguiente stage.
+
+
+
+
+stages disponibles: $count $group $limit $lookup $set/ $addFiels $skip $sort $match $merge
+$addFields:
+Agrega nuevos campos a documentos existentes en la etapa de agregación.
+$count:
+Cuenta el número de documentos en el resultado de la etapa de agregación.
+$group:
+Agrupa documentos por un campo específico y realiza operaciones de agregación (como sumas, promedios, contar, etc.) en los grupos resultantes.
+$limit:
+Limita el número de documentos que pasan a la siguiente etapa de agregación.
+$lookup:
+Realiza una operación de "unión" entre dos colecciones, similar a un JOIN en SQL, para combinar documentos de múltiples colecciones.
+$match:
+Filtra documentos que coinciden con un criterio específico.
+$merge:
+Fusiona los resultados de la etapa de agregación actual en una colección existente o crea una nueva colección si no existe.
+$set / $addField:
+Establece un nuevo valor para un campo específico en los documentos que pasan a la siguiente etapa de agregación.
+$skip:
+Omite un número específico de documentos y pasa los documentos restantes a la siguiente etapa de agregación.
+$sort:
+Ordena los documentos basándose en un campo específico, ya sea en orden ascendente (1) o descendente (-1).
+
+
+
+
+
+
+
+EJEMPLO EN VIVO PARA PONER EN PRACTICA:
+PARTE 1:
+Se desea gestionar una bas de datos para una pizzeria. Dado un conjunto de ordenes:
+1- Definir las ventas totales de los diferentes sabores para las pizzas medianas.
+    -primero una stage para filtrar las pizzas por su tamaño.
+    -segundo stage agrupar por sabor para saber cuantas se vendieron de dicho sabor.
+
+
+    rta:  
+          //agrupamos por medium
+     {$match: {size: "medium"} }, //solo las de tamaño medium
+          //aca ya tenemos stageadas las de medium solamente.
+     {$group: {_id: "$name", totalQuantity: {$sum: "$quantity"}}}
+
+PARTE 2:
+-Primero, entregar los resultados en orden de mayor a menor por cantidad de ventas.
+-Segundo, desea que los resultados se almacenen en una coleccion nueva "reports" para consultar el reporte para analisis futuros. 
+    rta:
+     {$sort: {totalQuantity: -1}},
+     {$group:{_id:1, orders: {$push:"$$ROOT"}}}, //??? es como que con el push root todo el array que viene en las stages se guarda en "orders"
+     {$proyect: {_id: 0, orders: "$orders"}}, //aca le damos un id a orders. 
+     {$merge: {into: "reports"}}
+
+
+
+teoria de la rta:
+
+$group con _id: 1 y $push: "$$ROOT":
+{$group:{_id:1, orders: {$push:"$$ROOT"}}}
+En esta etapa, estás agrupando todos los documentos en un único grupo usando _id: 1.
+El operador $push: "$$ROOT" crea un array llamado orders que contiene todos los documentos que han pasado por las etapas anteriores.
+Como resultado, obtienes un único documento con un array orders que contiene todos los resultados de las etapas anteriores.
+
+$project para renombrar _id y seleccionar el array orders:
+{$project: {_id: 0, orders: "$orders"}}
+En esta etapa, estás utilizando el operador $project para darle formato al documento final que quieres almacenar.
+Estás excluyendo el campo _id con _id: 0 y renombrando el array orders con el mismo nombre "orders".
+Como resultado, obtienes un documento con un único campo orders que contiene el array de documentos que has agrupado en la etapa anterior.
+
+$merge para almacenar los resultados en una nueva colección "reports":
+{$merge: {into: "reports"}}
+En esta etapa final, estás utilizando el operador $merge para almacenar el resultado de la etapa anterior en una nueva colección llamada "reports".
+Si la colección "reports" no existe, se creará automáticamente.
+Si la colección "reports" ya existe, los documentos se añadirán a la colección existente.

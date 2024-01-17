@@ -1,0 +1,7 @@
+show dbs
+use nombreBaseDeDatos
+db.createCollection("NombreColeccion") -parado en la base de datos
+show colecctions // ver colecciones
+db.NombreColeccion.insertOne({"datos"})
+db.NombreColeccion.insertMany([{},{},{}])
+db.NombreColeccion.find() 

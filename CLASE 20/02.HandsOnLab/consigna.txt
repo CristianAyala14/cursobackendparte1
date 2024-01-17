@@ -1,0 +1,23 @@
+Primer Login por formulario:
+Como lo hacemos? Se levantara un sistema de login completo utilizando router + motor de plantillas handlebars + base de datos para usuarios y sessiones.
+1-Se debera contar con una estructura de router para session en /api/session/ el cual contara con metodos para registrar a un usuario y para su respectivo login.
+2-Se debera contar ademas con un router de vistas en la ruta base / para llevar al formulario de login, de registro y de perfil.
+3-El formulario de registro insertara en la base de datos el usuario. El cual debera contar con:
+-First_name, last_name, email, age, password
+4-Se debe contar con el formulario de login el cual corroborara que el usuario exista en la base, y ademas genere un objeto user en req.session, indicando que puede utilizar la pagina. 
+5-Agregar validaciones a las rutas de vistas para que, si aun no estoy logueado, no pueda entrar a ver mi perfil, y si ya estoy logueado, no pueda volver a loguearme o registrarme. 
+6-En la vista de perfil, se deben arrojar los datos no sensibles del usuario que se haya logueado. 
+7-Cambiar la validacion de rutas por middlewares de rutas publicas o privadass.
+ a.Las rutas publicas deben regresar siemrpe a la pantalla login en caso de no conocerse una session activa
+ b.las rutas privadas deben regresarsiempre a la pantalla profile en caso de que haya una sesion activa.
+instalaciones:
+express
+express-handlebars
+mongoose
+express-session
+connect-mongo
+//seguridad de hasheo
+bcrypt
+// Passport es un middleware de autenticación para Node.js que simplifica la gestión de la autenticación en aplicaciones web. 
+npm i passport  y npm passport-local(extrategia)
+es genera una carpeta donde guardamos las configuraciones.

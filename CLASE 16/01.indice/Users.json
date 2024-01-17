@@ -1,0 +1,32 @@
+[
+    {
+      "first_name": "Celia",
+      "last_name": "Pérez",
+      "email": "juan.perez@example.com",
+      "gender": "Male"
+    },
+    {
+      "first_name": "María",
+      "last_name": "López",
+      "email": "maria.lopez@example.com",
+      "gender": "Female"
+    },
+    {
+      "first_name": "Carlos",
+      "last_name": "García",
+      "email": "carlos.garcia@example.com",
+      "gender": "Male"
+    },
+    {
+      "first_name": "Laura",
+      "last_name": "Rodríguez",
+      "email": "laura.rodriguez@example.com",
+      "gender": "Female"
+    },
+    {
+      "first_name": "Alejandro",
+      "last_name": "Martínez",
+      "email": "alejandro.martinez@example.com",
+      "gender": "Male"
+    }
+]
