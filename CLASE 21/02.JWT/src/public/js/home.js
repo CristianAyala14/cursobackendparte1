@@ -12,4 +12,4 @@ fetch("api/current", {
 }).then(json =>{
     const paragraph = document.getElementById("result")
     paragraph.innerHTML =  ` Hola tus datos son: ${json.payload.email} y ${json.payload.password}`
-})
+})  
